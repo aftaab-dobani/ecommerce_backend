@@ -27,7 +27,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
   router.get('/:id', async (req, res) => {
     try {
       const productData = await Product.findByPk(req.params.id, {
-        include: [{ model: Category,}, {model: Tag, through: ProductTag, as: 'category_productTag'}],
+        include: [{ model: Category,}, {model: Tag, through: ProductTag, as: 'category_product_Tag'}],
       });
   
       if (!productData) {
@@ -119,7 +119,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
   try {
-    const productData = await Product.destroy({
+    const productData = Product.destroy({
       where: {
         id: req.params.id
       }
