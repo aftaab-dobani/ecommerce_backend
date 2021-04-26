@@ -25,7 +25,7 @@ const { Tag, Product, ProductTag } = require('../../models');
     try {
       const tagData = await Tag.findByPk(req.params.id, {
         
-        include: [{ model: Product, through: ProductTag }]
+        include: [{ model: Product }]
       });
   
       if (!tagData) {
@@ -52,9 +52,11 @@ const { Tag, Product, ProductTag } = require('../../models');
   });
 
 
-router.put('/:id', (req, res) => {
+
   // update a tag's name by its `id` value
-});
+ 
+
+
 
 
   // delete on tag by its `id` value
