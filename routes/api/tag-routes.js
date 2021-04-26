@@ -54,8 +54,19 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 
   // update a tag's name by its `id` value
- 
-
+  router.put('/:id', (req,res) => {
+    Tag.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then((updatedTag) => res.json(updatedTag))
+    .catch((err) => res.status(500).json(err));
+    
+    })
+    
+  
+  
 
 
 
